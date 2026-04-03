@@ -5,6 +5,7 @@ Thumbs.db
 .env.*
 !.env.example
 backend/.env
+backend/static/
 backend/.env.*
 !backend/.env.example
 frontend/.env
