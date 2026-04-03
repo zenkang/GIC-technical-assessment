@@ -75,3 +75,30 @@ async def test_delete_cafe_raises_when_not_found():
 
     assert exc_info.value.status_code == 404
     assert exc_info.value.detail == "Cafe not found"
+
+
+@pytest.mark.asyncio
+async def test_delete_cafe_with_no_assignments_skips_employee_deletes():
+    cafe_id = uuid.uuid4()
+    cafe = SimpleNamespace(id=cafe_id, logo=None)
+
+    db = AsyncMock()
+    db.execute = AsyncMock(
+        side_effect=[
+            _ExecuteResult(one=cafe),
+            _ExecuteResult(many=[]),
+        ]
+    )
+    db.delete = AsyncMock()
+    db.flush = AsyncMock()
+    db.commit = AsyncMock()
+
+    command = DeleteCafeCommand(cafe_id=cafe_id)
+    result = await command.execute(db)
+
+    assert result == {"detail": "Cafe deleted"}
+    assert db.delete.await_count == 1
+    assert db.delete.await_args_list[0].args[0] is cafe
+    assert db.execute.await_count == 2
+    db.flush.assert_awaited_once()
+    db.commit.assert_awaited_once()

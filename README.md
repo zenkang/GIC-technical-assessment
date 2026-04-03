@@ -143,6 +143,13 @@ cafe-manager/
 │   ├── alembic/            # Database migrations
 │   ├── static/logos/       # Uploaded cafe logos
 │   ├── seed.py
+│   ├── tests/              # Backend pytest test suite
+│   │   ├── test_cafe_delete_command.py
+│   │   ├── test_cafe_logo_file_save.py
+│   │   ├── test_cafe_logo_url.py
+│   │   ├── test_employee_command_helpers.py
+│   │   ├── test_employee_query.py
+│   │   └── test_employee_schema_validation.py
 │   └── Dockerfile
 ├── frontend/
 │   ├── src/
