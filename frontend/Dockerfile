@@ -13,8 +13,11 @@ FROM nginx:alpine
 # Copy the built assets
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Replace the default Nginx config with custom
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Default for local docker-compose network; override in Railway frontend variables.
+ENV BACKEND_URL=http://backend:8000
+
+# Render nginx config from template at container startup via official nginx entrypoint.
+COPY nginx.conf /etc/nginx/templates/default.conf.template
 
 EXPOSE 80
 
