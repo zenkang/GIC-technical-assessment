@@ -87,9 +87,9 @@ export default function AddEditCafePage() {
   }
 
   return (
-    <div style={{ maxWidth: 560 }}>
-      <Title level={3} style={{ marginBottom: 24 }}>
-        {isEditMode ? "Edit Café" : "Add New Café"}
+    <div className="form-card">
+      <Title level={3} className="page-title">
+        {isEditMode ? "Edit Cafe" : "Add New Cafe"}
       </Title>
 
       <Form
@@ -152,7 +152,7 @@ export default function AddEditCafePage() {
             <Button type="primary" htmlType="submit" loading={mutation.isPending}>
               {isEditMode ? "Update Café" : "Create Café"}
             </Button>
-            <Button onClick={() => navigate("/")}>Cancel</Button>
+            <Button className="btn-gic" onClick={() => navigate("/")}>Cancel</Button>
           </Space>
         </Form.Item>
       </Form>

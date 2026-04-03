@@ -68,8 +68,8 @@ export default function CafesPage() {
         value ? (
           <Avatar src={value} shape="square" size={40} style={{ marginTop: 4 }} />
         ) : (
-          <Avatar shape="square" size={40} style={{ marginTop: 4, background: "#d9d9d9" }}>
-            ☕
+          <Avatar shape="square" size={40} style={{ marginTop: 4, background: "var(--gic-charcoal-light)" }}>
+            C
           </Avatar>
         ),
     },
@@ -128,7 +128,7 @@ export default function CafesPage() {
     <div>
       {/* ── Page header ── */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
-        <Title level={3} style={{ margin: 0 }}>Cafes</Title>
+        <Title level={3} className="page-title" style={{ margin: 0 }}>Cafes</Title>
         <Button
           type="primary"
           icon={<PlusOutlined />}
@@ -156,7 +156,7 @@ export default function CafesPage() {
       </div>
 
       {/* ── AG Grid table ── */}
-      <div className="ag-theme-alpine" style={{ height: 480 }}>
+      <div className="ag-theme-alpine-dark grid-wrapper" style={{ height: 480 }}>
         <AgGridReact
           rowData={cafes}
           columnDefs={columnDefs}

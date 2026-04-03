@@ -97,8 +97,8 @@ export default function AddEditEmployeePage() {
   }
 
   return (
-    <div style={{ maxWidth: 560 }}>
-      <Title level={3} style={{ marginBottom: 24 }}>
+    <div className="form-card">
+      <Title level={3} className="page-title">
         {isEditMode ? "Edit Employee" : "Add New Employee"}
       </Title>
 
@@ -176,7 +176,7 @@ export default function AddEditEmployeePage() {
             <Button type="primary" htmlType="submit" loading={mutation.isPending}>
               {isEditMode ? "Update Employee" : "Create Employee"}
             </Button>
-            <Button onClick={() => navigate("/employees")}>Cancel</Button>
+            <Button className="btn-gic" onClick={() => navigate("/employees")}>Cancel</Button>
           </Space>
         </Form.Item>
       </Form>

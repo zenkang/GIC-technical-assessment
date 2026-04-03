@@ -111,7 +111,7 @@ export default function EmployeesPage() {
       {/* ── Page header ── */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
         <div>
-          <Title level={3} style={{ margin: 0 }}>
+          <Title level={3} className="page-title" style={{ margin: 0 }}>
             Employees
             {cafeFilter && (
               <Tag color="processing" style={{ marginLeft: 12, fontWeight: "normal", fontSize: 14 }}>
@@ -135,7 +135,7 @@ export default function EmployeesPage() {
       </div>
 
       {/* ── AG Grid table ── */}
-      <div className="ag-theme-alpine" style={{ height: 480 }}>
+      <div className="ag-theme-alpine-dark grid-wrapper" style={{ height: 480 }}>
         <AgGridReact
           rowData={employees}
           columnDefs={columnDefs}

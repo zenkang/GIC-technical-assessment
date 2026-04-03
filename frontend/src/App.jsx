@@ -1,9 +1,8 @@
 import { Outlet, Link, useLocation } from "react-router-dom";
-import { Layout, Menu, Typography } from "antd";
+import { Layout, Menu } from "antd";
 import { CoffeeOutlined, TeamOutlined } from "@ant-design/icons";
 
 const { Header, Content, Footer } = Layout;
-const { Title } = Typography;
 
 const NAV_ITEMS = [
   {
@@ -24,26 +23,25 @@ export default function App() {
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
-      <Header style={{ display: "flex", alignItems: "center", gap: 24 }}>
-        <Title level={4} style={{ color: "#fff", margin: 0, whiteSpace: "nowrap" }}>
-          ☕ Café Manager
-        </Title>
+      <Header className="app-header" style={{ display: "flex", alignItems: "center", gap: 24 }}>
+        <span className="app-logo">Cafe Manager</span>
         <Menu
           theme="dark"
           mode="horizontal"
           selectedKeys={[selectedKey]}
           items={NAV_ITEMS}
-          style={{ flex: 1, minWidth: 0 }}
+          style={{ flex: 1, minWidth: 0, background: "transparent" }}
         />
       </Header>
 
-      {/* <Outlet> renders the matched child route (replaces <Routes><Route> from before) */}
-      <Content style={{ padding: "24px 48px" }}>
-        <Outlet />
+      <Content className="app-content">
+        <div className="fade-in">
+          <Outlet />
+        </div>
       </Content>
 
-      <Footer style={{ textAlign: "center", color: "#aaa" }}>
-        Café Employee Manager © {new Date().getFullYear()}
+      <Footer className="app-footer">
+        Built for GIC Digital Platform Assessment &middot; {new Date().getFullYear()}
       </Footer>
     </Layout>
   );
